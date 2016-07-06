@@ -20,7 +20,7 @@ Your app must:
 - **Add items** to each to-do list
 - Allow the user to **remove items from a to-do list**
 - Allow the user to **remove an entire to-do list**
-- Use two custom Java objects to contain your data for the **To Do Lists**, and the **To Do Items** in each **ToDoList**
+- Use two custom Java objects to contain your data for the **To Do Lists**, and the **To Do Items** in each **com.example.administrator.project_1___to_do_list.ToDoList**
 - Show an error message if invalid input is given
 - Persist data (your to-do-lists) while the app is open using a **singleton**
 

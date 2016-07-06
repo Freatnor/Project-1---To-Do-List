@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Project-1---To-Do-List</string>
+    <string name="title_activity_to_do_list_items">ToDoListItemsActivity</string>
+</resources>

@@ -92,6 +92,26 @@ public class ToDoList{
         mIsDone = done;
     }
 
+    public void checkDone(){
+        if((getToDoCount() == 0) && !isDone()){
+            setDone(true);
+        }
+        else if((getToDoCount() != 0)&& isDone()){
+            setDone(false);
+        }
+    }
+
+    public void updateToDoCount(boolean completed){
+        if(completed){
+            mCompletedCount++;
+            mToDoCount--;
+        }
+        else{
+            mCompletedCount--;
+            mToDoCount++;
+        }
+    }
+
     public int getCompletedCount() {
         return mCompletedCount;
     }
@@ -114,7 +134,8 @@ public class ToDoList{
 
     public void addToDoItem(ToDoItem item){
         mItems.add(item);
-        mToDoCount++;
+        if(item.isDone()) { mCompletedCount++; }
+        else { mToDoCount++; }
     }
 
     public int size(){

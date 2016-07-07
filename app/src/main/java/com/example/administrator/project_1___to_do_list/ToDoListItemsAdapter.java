@@ -10,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 /**
  * Adapter for the ListItems Activity and Items Recycler View. Has the onClicks for the checkbox
@@ -44,9 +43,12 @@ public class ToDoListItemsAdapter extends RecyclerView.Adapter<ToDoListItemsView
             public void onClick(View view) {
                 mList.getToDoItem(position).setDone(((CheckBox) view).isChecked());
                 holder.convertViewForChecked();
+                mList.updateToDoCount(((CheckBox) view).isChecked());
 
             }
         });
+
+
 
 
     }

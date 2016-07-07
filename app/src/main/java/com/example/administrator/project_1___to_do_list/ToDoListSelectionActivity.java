@@ -32,4 +32,11 @@ public class ToDoListSelectionActivity extends AppCompatActivity {
         mAdapter = new ToDoListSelectionAdapter(this);
         mView.setAdapter(mAdapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mAdapter.notifyDataSetChanged();
+    }
 }

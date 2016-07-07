@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -14,7 +16,8 @@ public class ToDoListItemsActivity extends AppCompatActivity {
     private ToDoList mList;
     private ListHolder mListHolder;
     private LinearLayoutManager mLayoutManager;
-    private 
+    private ToDoListItemsAdapter mAdapter;
+    private RecyclerView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,16 @@ public class ToDoListItemsActivity extends AppCompatActivity {
 
 
 
+
+        mView = (RecyclerView) findViewById(R.id.items_recycler_view);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new ToDoListItemsAdapter(mList);
+        mView.setAdapter(mAdapter);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.colorPrimary));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -114,6 +114,7 @@ public class ToDoList{
 
     public void addToDoItem(ToDoItem item){
         mItems.add(item);
+        mToDoCount++;
     }
 
     public int size(){

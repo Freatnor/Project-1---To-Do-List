@@ -2,6 +2,7 @@ package com.example.administrator.project_1___to_do_list;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class ToDoListSelectionAdapter extends RecyclerView.Adapter<ToDoListSelec
          ToDoList list = mListsHolder.get(position);
 
         holder.setListName(list.getName());
+//        if(position % 2 != 0){ holder.setSecondColor();}
 
         if(list.isDone()){
             holder.setDone();
@@ -150,6 +152,11 @@ class ToDoListSelectionViewHolder extends RecyclerView.ViewHolder{
 
     public Context getContext(){
         return mToDoNumber.getContext();
+    }
+
+    public void setSecondColor(){
+        mListLayoutWrapper.setBackgroundColor(ContextCompat
+                .getColor(mListLayoutWrapper.getContext(),R.color.colorPrimaryDark));
     }
 }
 

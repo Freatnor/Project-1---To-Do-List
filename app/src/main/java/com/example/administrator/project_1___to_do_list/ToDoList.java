@@ -1,5 +1,7 @@
 package com.example.administrator.project_1___to_do_list;
 
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
  *
  * Username for if the lists are specific to a user of the app
  */
-public class ToDoList {
+public class ToDoList{
     private List<ToDoItem> mItems;
     private int mToDoCount;
     private int mCompletedCount;
@@ -112,6 +114,10 @@ public class ToDoList {
 
     public void addToDoItem(ToDoItem item){
         mItems.add(item);
+    }
+
+    public int size(){
+        return mItems.size();
     }
 
 }

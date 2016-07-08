@@ -57,10 +57,12 @@ public class ToDoListSelectionActivity extends AppCompatActivity {
 
                         mListHolder.add(new ToDoList(title.getText().toString().trim()));
                         mAdapter.notifyItemInserted(mListHolder.size()-1);
+
                     }
                 });
 
-                mAddDialog.show();
+                //mAddDialog.show();
+
             }
 
         });

@@ -121,9 +121,12 @@ public class ToDoListItemsAdapter extends RecyclerView.Adapter<ToDoListItemsView
                     }
                 });
 
+
                 mDialog.show();
 
-                Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
+                //mDialog.getCurrentFocus()
+
+                //Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -282,6 +285,6 @@ class ToDoListItemsViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void setDescriptionOnClickListener(View.OnClickListener listener){
-        mEditDescription.setOnClickListener(listener);
+        mItemDescription.setOnClickListener(listener);
     }
 }

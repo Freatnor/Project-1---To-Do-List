@@ -45,24 +45,7 @@ public class AddDialog extends AlertDialog {
         else{
              mType = null;
          }
-    }
 
-    /*
-     * For use with Lists
-     * @param context
-     * @param position
-     * @param listHolder
-
-    public DeleteDialog(@NonNull Context context, int position, ListHolder listHolder, RecyclerView.Adapter adapter) {
-        super(context);
-        //mPosition = position;
-        //mListHolder = listHolder;
-        mContext = context;
-        //mAdapter = adapter;
-    }*/
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
         // Build the dialog and set up the button click handlers
         LinearLayout layout = new LinearLayout(mContext);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -102,6 +85,25 @@ public class AddDialog extends AlertDialog {
         builder.create();
         builder.show();
     }
+
+    /*
+     * For use with Lists
+     * @param context
+     * @param position
+     * @param listHolder
+
+    public DeleteDialog(@NonNull Context context, int position, ListHolder listHolder, RecyclerView.Adapter adapter) {
+        super(context);
+        //mPosition = position;
+        //mListHolder = listHolder;
+        mContext = context;
+        //mAdapter = adapter;
+    }*/
+
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//
+//    }
 }
 
 ;

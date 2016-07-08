@@ -151,7 +151,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
                     }
                 });
 
-                mAddDialog.show();
+                //mAddDialog.show();
             }
         });
     }

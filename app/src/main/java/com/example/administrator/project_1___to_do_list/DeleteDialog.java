@@ -61,6 +61,8 @@ public class DeleteDialog extends AlertDialog {
         builder.setMessage("Are you sure you want to delete this?")
                 .setPositiveButton("Delete", mPositiveListener)
                 .setNegativeButton("Cancel", mNegativeListener);
+
+
         builder.create();
         builder.show();
     }

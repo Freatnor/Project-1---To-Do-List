@@ -22,3 +22,14 @@ The prototype on one page in a notebook:
   <img src="screenshots/Screenshot_20160708-151015.png" width="250">
 </p>
 
+----
+#### Future Features
+
+- Check for empty list names, character limit
+- Icons instead of some of the buttons
+- deleting lists from first page
+- UX changes
+- Saving to DB
+- Include object names in alert dialogs
+- Allow multiple item entry?
+- Add borders

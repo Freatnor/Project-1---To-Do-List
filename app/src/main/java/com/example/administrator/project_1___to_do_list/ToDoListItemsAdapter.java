@@ -44,7 +44,7 @@ public class ToDoListItemsAdapter extends RecyclerView.Adapter<ToDoListItemsView
         holder.setItemDescription(item.getDescription());
         holder.setItemName(item.getName());
         holder.setEditName(item.getName());
-        holder.setEditDescription(item.getName());
+        holder.setEditDescription(item.getDescription());
 
         holder.setCheckBoxOnClickListener(new View.OnClickListener() {
             @Override

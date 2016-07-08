@@ -1,5 +1,7 @@
 package com.example.administrator.project_1___to_do_list;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 
 public class ToDoListSelectionActivity extends AppCompatActivity {
 
@@ -15,6 +18,7 @@ public class ToDoListSelectionActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private ToDoListSelectionAdapter mAdapter;
     private RecyclerView mView;
+    private AddDialog mAddDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +26,11 @@ public class ToDoListSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_to_do_list_selection);
         mListHolder = ListHolder.getInstance();
 
-        mListHolder.add(new ToDoList("List 1"));
-        mListHolder.add(new ToDoList("List 2"));
-        mListHolder.add(new ToDoList("List 3"));
-        mListHolder.add(new ToDoList("List 4"));
-        mListHolder.add(new ToDoList("List 5"));
+//        mListHolder.add(new ToDoList("List 1"));
+//        mListHolder.add(new ToDoList("List 2"));
+//        mListHolder.add(new ToDoList("List 3"));
+//        mListHolder.add(new ToDoList("List 4"));
+//        mListHolder.add(new ToDoList("List 5"));
 
         for (int i = 0; i < mListHolder.size(); i++) {
             ToDoList list = mListHolder.get(i);
@@ -46,9 +50,19 @@ public class ToDoListSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Add new ListItem to the List
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mAddDialog = new AddDialog(view.getContext(), AddType.LIST, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        EditText title = (EditText) ((Dialog)dialogInterface).findViewById(R.id.add_dialog_title_edit);
+
+                        mListHolder.add(new ToDoList(title.getText().toString().trim()));
+                        mAdapter.notifyItemInserted(mListHolder.size()-1);
+                    }
+                });
+
+                mAddDialog.show();
             }
+
         });
     }
 

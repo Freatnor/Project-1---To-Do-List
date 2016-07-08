@@ -1,5 +1,6 @@
 package com.example.administrator.project_1___to_do_list;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
     private LinearLayout mLayout;
 
     private DeleteDialog mDialog;
+    private AddDialog mAddDialog;
 
 
     @Override
@@ -50,9 +52,9 @@ public class ToDoListItemsActivity extends AppCompatActivity {
         /* Test Code
 
          */
-        mList.addToDoItem(new ToDoItem("Item 1", "Description"));
-        mList.addToDoItem(new ToDoItem("Item 2", "Description"));
-        mList.addToDoItem(new ToDoItem("Item 3", "Description", true));
+//        mList.addToDoItem(new ToDoItem("Item 1", "Description"));
+//        mList.addToDoItem(new ToDoItem("Item 2", "Description"));
+//        mList.addToDoItem(new ToDoItem("Item 3", "Description", true));
 
 
         mListName = (TextView) findViewById(R.id.item_list_name);
@@ -86,7 +88,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
             public void onFocusChange(View view, boolean b) {
                 EditText e = (EditText) view;
                 if(!b){
-                    mList.setName(e.getText().toString());
+                    mList.setName(e.getText().toString().trim());
                     mRename.setText(mList.getName());
                     mListName.setText(mList.getName());
 
@@ -119,7 +121,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
 
                 mDialog.show();
 
-                Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -137,8 +139,19 @@ public class ToDoListItemsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Add new ListItem to the List
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                mAddDialog = new AddDialog(view.getContext(), AddType.ITEM, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        EditText title = (EditText) ((Dialog)dialogInterface).findViewById(R.id.add_dialog_title_edit);
+                        EditText descr = (EditText) ((Dialog)dialogInterface).findViewById(R.id.add_dialog_description_edit);
+
+                        mList.addToDoItem(new ToDoItem(title.getText().toString().trim(), descr.getText().toString().trim()));
+                        mAdapter.notifyItemInserted(mList.size()-1);
+                    }
+                });
+
+                mAddDialog.show();
             }
         });
     }

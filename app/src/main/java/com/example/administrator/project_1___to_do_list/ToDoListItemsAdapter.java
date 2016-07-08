@@ -190,7 +190,7 @@ class ToDoListItemsViewHolder extends RecyclerView.ViewHolder{
             return null;
         }
         else{
-            String newName = mEditName.getText().toString();
+            String newName = mEditName.getText().toString().trim();
 
             mEditName.setText(newName);
             mItemName.setText(newName);
@@ -222,7 +222,7 @@ class ToDoListItemsViewHolder extends RecyclerView.ViewHolder{
             return null;
         }
         else{
-            String newDescription = mEditDescription.getText().toString();
+            String newDescription = mEditDescription.getText().toString().trim();
 
             mEditDescription.setText(newDescription);
             mItemDescription.setText(newDescription);

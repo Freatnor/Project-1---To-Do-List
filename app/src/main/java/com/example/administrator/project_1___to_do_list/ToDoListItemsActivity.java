@@ -119,7 +119,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
                     }
                 });
 
-                mDialog.show();
+                //mDialog.show();
 
                 //Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
             }

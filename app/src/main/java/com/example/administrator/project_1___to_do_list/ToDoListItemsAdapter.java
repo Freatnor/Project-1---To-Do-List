@@ -122,7 +122,7 @@ public class ToDoListItemsAdapter extends RecyclerView.Adapter<ToDoListItemsView
                 });
 
 
-                mDialog.show();
+                //mDialog.show();
 
                 //mDialog.getCurrentFocus()
 

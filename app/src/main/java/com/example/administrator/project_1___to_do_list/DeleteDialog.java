@@ -38,6 +38,16 @@ public class DeleteDialog extends AlertDialog {
 
         mPositiveListener = positive;
         mNegativeListener = negative;
+
+        // Build the dialog and set up the button click handlers
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setMessage("Are you sure you want to delete this?")
+                .setPositiveButton("Delete", mPositiveListener)
+                .setNegativeButton("Cancel", mNegativeListener);
+
+
+        builder.create();
+        builder.show();
     }
 
     /*
@@ -54,17 +64,9 @@ public class DeleteDialog extends AlertDialog {
         //mAdapter = adapter;
     }*/
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        // Build the dialog and set up the button click handlers
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setMessage("Are you sure you want to delete this?")
-                .setPositiveButton("Delete", mPositiveListener)
-                .setNegativeButton("Cancel", mNegativeListener);
-
-
-        builder.create();
-        builder.show();
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//
+//    }
 }
 

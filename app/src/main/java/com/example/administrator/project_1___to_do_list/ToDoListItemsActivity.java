@@ -1,5 +1,6 @@
 package com.example.administrator.project_1___to_do_list;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ToDoListItemsActivity extends AppCompatActivity {
 
@@ -29,6 +31,8 @@ public class ToDoListItemsActivity extends AppCompatActivity {
     private Button mDelete;
     private LinearLayout mLayout;
 
+    private DeleteDialog mDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class ToDoListItemsActivity extends AppCompatActivity {
         mListHolder = ListHolder.getInstance();
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra(ToDoListSelectionActivity.EXTRA_ITEM_LIST, -1);
+        final int position = intent.getIntExtra(ToDoListSelectionActivity.EXTRA_ITEM_LIST, -1);
         mList = mListHolder.get(position);
 
         /* Test Code
@@ -90,6 +94,34 @@ public class ToDoListItemsActivity extends AppCompatActivity {
                     mListName.setVisibility(View.VISIBLE);
                 }
             }
+        });
+
+        mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //spawn dialog
+                //start dialog
+
+                mDialog = new DeleteDialog(view.getContext(), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //positive
+                        mListHolder.remove(position);
+                        finish();
+                    }
+                }, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //negative!!!
+
+                    }
+                });
+
+                mDialog.show();
+
+                Toast.makeText(view.getContext(), "Delet This!", Toast.LENGTH_SHORT).show();
+            }
+
         });
 
         mView = (RecyclerView) findViewById(R.id.items_recycler_view);

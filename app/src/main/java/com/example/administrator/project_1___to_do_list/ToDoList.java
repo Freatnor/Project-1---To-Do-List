@@ -138,6 +138,13 @@ public class ToDoList{
         else { mToDoCount++; }
     }
 
+    public void removeToDoItem(int position){
+        ToDoItem item = mItems.get(position);
+        if(item.isDone()) { mCompletedCount--; }
+        else { mToDoCount--; }
+        mItems.remove(position);
+    }
+
     public int size(){
         return mItems.size();
     }
